@@ -21,12 +21,15 @@ $(document).ready(function(){
   		event.preventDefault();
   		newGame();
   		$("#feedback").html('Make Your Guess!');
+  		$('#count').html('0');
   	});
 
   	$(".button").on('click', function(event) {
   		event.preventDefault();
 
   		guess();
+
+  		$('#count').html(function(i, val) { return +val+1 });
   	});
   	var guess = function(){
   		var userInput = $("#userGuess").val();
