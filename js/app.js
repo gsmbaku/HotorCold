@@ -11,9 +11,9 @@ $(document).ready(function(){
   	$("a.close").click(function(){
   		$(".overlay").fadeOut(1000);
   	});
-	var number = 0;
+	var number = Math.floor(Math.random() * 100);
   	var newGame = function(){
-  		number = Math.floor(Math.random() * 10);
+  		number = Math.floor(Math.random() * 100);
   	};
   	
   
@@ -37,7 +37,7 @@ $(document).ready(function(){
 		}
 		else if(Math.abs(userInput - number) > 30){
 			$("#feedback").html('Ice Cold');
-			
+
 		}
 		else if(Math.abs(userInput - number) > 20){
 			$("#feedback").html("Cold");
