@@ -11,40 +11,47 @@ $(document).ready(function(){
   	$("a.close").click(function(){
   		$(".overlay").fadeOut(1000);
   	});
-
+	var number = 0;
   	var newGame = function(){
-  		var number = function(){
-  		Math.floor(Math.random() * 10);
-  		};
-  	var guess = function(){
-  		$(":input") //How do i select and store the input? 
+  		number = Math.floor(Math.random() * 10);
+  	};
+  	
+  
+  	$(".new").on('click', function(event) {
+  		event.preventDefault();
+  		newGame();
+  		$("#feedback").html('Make Your Guess!');
+  	});
 
-  		//is this the correct way to check the hot/cold
-  		if(guess == number){
-		$(".feedback").(""); //do I change the feedback give by appending?
+  	$(".button").on('click', function(event) {
+  		event.preventDefault();
+
+  		guess();
+  	});
+  	var guess = function(){
+  		var userInput = $("#userGuess").val();
+
+  	
+  		if(userInput == number){
+			$("#feedback").html('Correct!');
 		}
-		else if(guess > number += 30){
-			$(".feedback").("");
+		else if(Math.abs(userInput - number) > 30){
+			$("#feedback").html('Ice Cold');
+			
 		}
-		else if(guess > number += 20){
-			$(".feedback").("");
+		else if(Math.abs(userInput - number) > 20){
+			$("#feedback").html("Cold");
 		}
-		else if(guess > number += 10){
-			$(".feedback").("");
+		else if(Math.abs(userInput - number) > 10){
+			$("#feedback").html("Warm");
 		}
-		else if(guess < number -= 30){
-			$(".feedback").("");
+		else if(Math.abs(userInput - number) > 0){
+			$("#feedback").html("Hot");
 		}
-		else if(guess < number -= 20){
-			$(".feedback").("");
-		}
-		else if(guess < number -= 10){
-			$(".feedback").("");
-		}
+  	
   	}
 
 
-  	};
 });
 
 
